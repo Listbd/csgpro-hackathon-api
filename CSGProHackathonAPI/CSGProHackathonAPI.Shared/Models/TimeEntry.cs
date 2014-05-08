@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSGProHackathonAPI.Shared.Models
 {
-	public class TimeEntry
+    public class TimeEntry : BaseModel
 	{
 		public int TimeEntryId { get; set; }
 		public int UserId { get; set; }

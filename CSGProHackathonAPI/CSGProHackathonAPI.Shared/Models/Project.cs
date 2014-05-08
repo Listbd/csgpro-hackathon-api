@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSGProHackathonAPI.Shared.Models
 {
-	public class Project
+	public class Project : BaseModel
 	{
 		public Project()
 		{

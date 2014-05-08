@@ -1,5 +1,6 @@
 namespace CSGProHackathonAPI.Shared.Migrations
 {
+    using CSGProHackathonAPI.Shared.Data;
     using CSGProHackathonAPI.Shared.Models;
     using System;
     using System.Data.Entity;
