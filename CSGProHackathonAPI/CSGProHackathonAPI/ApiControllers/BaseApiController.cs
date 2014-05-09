@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
 
 namespace CSGProHackathonAPI.ApiControllers
 {
@@ -41,6 +42,11 @@ namespace CSGProHackathonAPI.ApiControllers
                     ModelState.AddModelError(validationMessage.Key, validationMessage.Message);
                 }
             }
+        }
+
+        protected ErrorActionResult Error(ModelStateDictionary modelState)
+        {
+            return new ErrorActionResult(Request, modelState);
         }
 
         protected ForbiddenActionResult Forbidden(string message)

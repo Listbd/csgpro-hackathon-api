@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\BaseApiController.cs" />
+    <Compile Include="ApiControllers\ErrorsController.cs" />
     <Compile Include="ApiControllers\TimeEntriesController.cs" />
     <Compile Include="ApiControllers\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -144,11 +145,11 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ApiControllers\ProjectsController.cs" />
-    <Compile Include="ApiControllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\BasicAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure\ErrorActionResult.cs" />
     <Compile Include="Infrastructure\ForbiddenActionResult.cs" />
     <Compile Include="Infrastructure\ForceHttpsAttribute.cs" />
     <Compile Include="Infrastructure\NoContentActionResult.cs" />

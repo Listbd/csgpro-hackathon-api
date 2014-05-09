@@ -76,7 +76,7 @@ namespace CSGProHackathonAPI.ApiControllers
                 }
                 else
                 {
-                    return BadRequest(ModelState);
+                    return Error(ModelState);
                 }
             }
             catch (Exception exc)
@@ -110,7 +110,7 @@ namespace CSGProHackathonAPI.ApiControllers
                 }
                 else
                 {
-                    return BadRequest(ModelState);
+                    return Error(ModelState);
                 }
             }
             catch (Exception exc)
