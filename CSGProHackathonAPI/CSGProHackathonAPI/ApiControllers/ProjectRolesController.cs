@@ -8,10 +8,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CSGProHackathonAPI.ApiControllers
 {
     [BasicAuthorize]
+    [EnableCors("*", "*", "*")]
     public class ProjectRolesController : BaseApiController<ProjectRole>
     {
         private Repository _repository;
