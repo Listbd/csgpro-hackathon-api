@@ -5,6 +5,7 @@ using CSGProHackathonAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 
@@ -16,9 +17,13 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             User user = null;
 
-            if (User.Identity.IsAuthenticated)
+            if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
-                user = ((UserIdentity)User.Identity).User;
+                var userIdentity = Thread.CurrentPrincipal.Identity as UserIdentity;
+                if (userIdentity != null)
+                {
+                    user = userIdentity.User;
+                }
             }
 
             return user;
