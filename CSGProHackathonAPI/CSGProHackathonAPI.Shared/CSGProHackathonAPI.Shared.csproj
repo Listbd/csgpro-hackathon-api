@@ -49,6 +49,7 @@
     <Compile Include="Data\Context.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\Security.cs" />
+    <Compile Include="Infrastructure\ValidationMessage.cs" />
     <Compile Include="Migrations\201405021910385_Initial.cs" />
     <Compile Include="Migrations\201405021910385_Initial.Designer.cs">
       <DependentUpon>201405021910385_Initial.cs</DependentUpon>
