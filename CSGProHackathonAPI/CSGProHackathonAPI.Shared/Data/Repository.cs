@@ -67,6 +67,7 @@ namespace CSGProHackathonAPI.Shared.Data
         public ProjectRole GetProjectRole(int projectRoleId)
         {
             return _context.ProjectRoles
+                .Include(pr => pr.Project)
                 .FirstOrDefault(pr => pr.ProjectRoleId == projectRoleId);
         }
 
@@ -95,6 +96,7 @@ namespace CSGProHackathonAPI.Shared.Data
         public ProjectTask GetProjectTask(int projectTaskId)
         {
             return _context.ProjectTasks
+                .Include(pr => pr.Project)
                 .FirstOrDefault(pt => pt.ProjectTaskId == projectTaskId);
         }
 
