@@ -9,6 +9,7 @@ using System.Web.Http.Filters;
 using System.Net;
 using System.Security.Principal;
 using CSGProHackathonAPI.Shared.Data;
+using CSGProHackathonAPI.Shared.Infrastructure;
 
 namespace CSGProHackathonAPI.Infrastructure
 {
@@ -43,9 +44,11 @@ namespace CSGProHackathonAPI.Infrastructure
                     var userName = credArray[0];
                     var password = credArray[1];
 
-                    if (_repository.LoginUser(userName, password))
+                    var user = _repository.LoginUser(userName, password);
+                    if (user != null)
                     {
-                        var currentPrincipal = new GenericPrincipal(new GenericIdentity(userName), null);
+                        var userIdentity = new UserIdentity(user);
+                        var currentPrincipal = new GenericPrincipal(userIdentity, null);
                         Thread.CurrentPrincipal = currentPrincipal;
                         return;
                     }

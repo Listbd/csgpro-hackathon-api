@@ -43,9 +43,8 @@ namespace CSGProHackathonAPI.Shared.Data
             _context.SaveEntity(project);
         }
 
-        public void DeleteProject(int projectId)
+        public void DeleteProject(Project project)
         {
-            var project = new Project() { ProjectId = projectId };
             _context.DeleteEntity(project);
         }
 
@@ -72,9 +71,8 @@ namespace CSGProHackathonAPI.Shared.Data
             _context.SaveEntity(projectRole);
         }
 
-        public void DeleteProjectRole(int projectRoleId)
+        public void DeleteProjectRole(ProjectRole projectRole)
         {
-            var projectRole = new ProjectRole() { ProjectRoleId = projectRoleId };
             _context.DeleteEntity(projectRole);
         }
         
@@ -101,9 +99,8 @@ namespace CSGProHackathonAPI.Shared.Data
             _context.SaveEntity(projectTask);
         }
 
-        public void DeleteProjectTask(int projectTaskId)
+        public void DeleteProjectTask(ProjectTask projectTask)
         {
-            var projectTask = new ProjectTask() { ProjectTaskId = projectTaskId };
             _context.DeleteEntity(projectTask);
         }
         
@@ -155,9 +152,8 @@ namespace CSGProHackathonAPI.Shared.Data
             _context.SaveEntity(timeEntry);
         }
 
-        public void DeleteTimeEntry(int timeEntryId)
+        public void DeleteTimeEntry(TimeEntry timeEntry)
         {
-            var timeEntry = new TimeEntry() { TimeEntryId = timeEntryId };
             _context.DeleteEntity(timeEntry);
         }
         
@@ -165,12 +161,14 @@ namespace CSGProHackathonAPI.Shared.Data
 
         #region User
 
-        public bool LoginUser(string userName, string password)
+        public User LoginUser(string userName, string password)
         {
             var hashedPassword = Security.GetSwcSH1(password);
 
             return _context.Users
-                .Any(u => u.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && u.HashedPassword == hashedPassword);
+                .Where(u => u.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && 
+                    u.HashedPassword == hashedPassword)
+                .FirstOrDefault();
         }
 
         public User GetUser(int userId)
@@ -185,9 +183,8 @@ namespace CSGProHackathonAPI.Shared.Data
             _context.SaveEntity(user);
         }
 
-        public void DeleteUser(int userId)
+        public void DeleteUser(User user)
         {
-            var user = new User() { UserId = userId };
             _context.DeleteEntity(user);
         }
 

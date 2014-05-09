@@ -6,7 +6,7 @@ using System.Text;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CSGProHackathonAPI;
-using CSGProHackathonAPI.Controllers;
+using CSGProHackathonAPI.ApiControllers;
 
 namespace CSGProHackathonAPI.Tests.Controllers
 {
