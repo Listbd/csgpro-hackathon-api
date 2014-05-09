@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSGProHackathonAPI.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -10,6 +11,9 @@ namespace CSGProHackathonAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+#if !DEBUG
+            config.Filters.Add(new ForceHttpsAttribute());
+#endif
 
             // Web API routes
             config.MapHttpAttributeRoutes();
