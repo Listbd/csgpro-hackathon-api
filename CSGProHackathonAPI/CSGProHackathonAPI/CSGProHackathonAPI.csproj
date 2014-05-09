@@ -124,6 +124,7 @@
     <Compile Include="ApiControllers\BaseApiController.cs" />
     <Compile Include="ApiControllers\ErrorsController.cs" />
     <Compile Include="ApiControllers\TimeEntriesController.cs" />
+    <Compile Include="ApiControllers\TimeZonesController.cs" />
     <Compile Include="ApiControllers\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
