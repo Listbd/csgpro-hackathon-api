@@ -25,9 +25,9 @@ namespace CSGProHackathonAPI.ApiControllers
         // GET api/projects
         public IEnumerable<Project> Get()
         {
-            var user = GetCurrentUser();
+            var currentUser = GetCurrentUser();
 
-            return _repository.GetProjects(user.UserId);
+            return _repository.GetProjects(currentUser.UserId);
         }
 
         // GET api/projects/5
@@ -41,8 +41,8 @@ namespace CSGProHackathonAPI.ApiControllers
                     return NotFound();
                 }
 
-                var user = GetCurrentUser();
-                if (project.UserId != user.UserId)
+                var currentUser = GetCurrentUser();
+                if (project.UserId != currentUser.UserId)
                 {
                     return Forbidden("The current user does not have access to the requested resource.");
                 }
@@ -60,13 +60,13 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             try
             {
-                var user = GetCurrentUser();
+                var currentUser = GetCurrentUser();
 
-                ValidateViewModel(viewModel, user);
+                ValidateViewModel(viewModel, currentUser);
 
                 if (ModelState.IsValid)
                 {
-                    var project = viewModel.GetModel(user);
+                    var project = viewModel.GetModel(currentUser);
 
                     _repository.SaveProject(project);
 
@@ -92,13 +92,13 @@ namespace CSGProHackathonAPI.ApiControllers
             {
                 var project = _repository.GetProject(id);
 
-                var user = GetCurrentUser();
-                if (project.UserId != user.UserId)
+                var currentUser = GetCurrentUser();
+                if (project.UserId != currentUser.UserId)
                 {
                     return Forbidden("You can only update projects for the current user.");
                 }
 
-                ValidateViewModel(viewModel, user);
+                ValidateViewModel(viewModel, currentUser);
 
                 if (ModelState.IsValid)
                 {
@@ -126,8 +126,8 @@ namespace CSGProHackathonAPI.ApiControllers
             {
                 var project = _repository.GetProject(id);
 
-                var user = GetCurrentUser();
-                if (project.UserId != user.UserId)
+                var currentUser = GetCurrentUser();
+                if (project.UserId != currentUser.UserId)
                 {
                     return Forbidden("You can only delete projects for the current user.");
                 }
