@@ -12,6 +12,10 @@ namespace CSGProHackathonAPI.Shared.Data
     {
         private Context _context;
 
+        public Repository() : this (new Context())
+        {
+        }
+
         public Repository(Context context)
         {
             _context = context;
