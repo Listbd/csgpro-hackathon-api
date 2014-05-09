@@ -9,6 +9,9 @@ using System.Text;
 
 namespace CSGProHackathonAPI.Infrastructure
 {
+    /// <summary>
+    /// This class taken from: http://bitoftech.net/2013/12/03/enforce-https-asp-net-web-api-basic-authentication/
+    /// </summary>
     public class ForceHttpsAttribute : AuthorizationFilterAttribute
     {
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)

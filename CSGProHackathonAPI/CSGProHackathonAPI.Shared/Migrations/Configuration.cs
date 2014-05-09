@@ -1,6 +1,7 @@
 namespace CSGProHackathonAPI.Shared.Migrations
 {
     using CSGProHackathonAPI.Shared.Data;
+    using CSGProHackathonAPI.Shared.Infrastructure;
     using CSGProHackathonAPI.Shared.Models;
     using System;
     using System.Data.Entity;
@@ -20,6 +21,7 @@ namespace CSGProHackathonAPI.Shared.Migrations
             {
                 UserId = 1,
                 UserName = "jamesc",
+                HashedPassword = Security.GetSwcSH1("gamehead"),
                 Name = "James Churchill",
                 Email = "jamesc@csgpro.com",
                 TimeZoneId = "Pacific Standard Time",

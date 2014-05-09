@@ -14,6 +14,9 @@ namespace CSGProHackathonAPI.Shared.Models
         [Required]
 		[MaxLength(50)]
 		public string UserName { get; set; }
+        [Required]
+        [MaxLength(255)]
+        public string HashedPassword { get; set; }
 		[Required]
 		[MaxLength(100)]
 		public string Name { get; set; }

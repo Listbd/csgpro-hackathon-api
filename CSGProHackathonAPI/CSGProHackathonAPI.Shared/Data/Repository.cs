@@ -1,4 +1,5 @@
-﻿using CSGProHackathonAPI.Shared.Models;
+﻿using CSGProHackathonAPI.Shared.Infrastructure;
+using CSGProHackathonAPI.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -163,6 +164,14 @@ namespace CSGProHackathonAPI.Shared.Data
         #endregion
 
         #region User
+
+        public bool LoginUser(string userName, string password)
+        {
+            var hashedPassword = Security.GetSwcSH1(password);
+
+            return _context.Users
+                .Any(u => u.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) && u.HashedPassword == hashedPassword);
+        }
 
         public User GetUser(int userId)
         {

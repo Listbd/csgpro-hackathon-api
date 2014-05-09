@@ -47,9 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Context.cs" />
+    <Compile Include="Infrastructure\Security.cs" />
     <Compile Include="Migrations\201405021910385_Initial.cs" />
     <Compile Include="Migrations\201405021910385_Initial.Designer.cs">
       <DependentUpon>201405021910385_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405090412166_AddUserHashedPasswordColumn.cs" />
+    <Compile Include="Migrations\201405090412166_AddUserHashedPasswordColumn.Designer.cs">
+      <DependentUpon>201405090412166_AddUserHashedPasswordColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -68,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201405021910385_Initial.resx">
       <DependentUpon>201405021910385_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405090412166_AddUserHashedPasswordColumn.resx">
+      <DependentUpon>201405090412166_AddUserHashedPasswordColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

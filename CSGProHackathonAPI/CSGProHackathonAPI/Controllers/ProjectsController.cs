@@ -1,4 +1,5 @@
-﻿using CSGProHackathonAPI.Shared.Data;
+﻿using CSGProHackathonAPI.Infrastructure;
+using CSGProHackathonAPI.Shared.Data;
 using CSGProHackathonAPI.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace CSGProHackathonAPI.Controllers
 {
+    [BasicAuthorize]
     public class ProjectsController : ApiController
     {
         private Repository _repository;
