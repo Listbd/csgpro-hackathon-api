@@ -27,6 +27,8 @@ namespace CSGProHackathonAPI.Shared.Data
         public List<Project> GetProjects(int userId)
         {
             return _context.Projects
+                .Include(p => p.ProjectRoles)
+                .Include(p => p.ProjectTasks)
                 .Where(p => p.UserId == userId)
                 .OrderBy(p => p.Name)
                 .ToList();
@@ -35,6 +37,8 @@ namespace CSGProHackathonAPI.Shared.Data
         public Project GetProject(int projectId)
         {
             return _context.Projects
+                .Include(p => p.ProjectRoles)
+                .Include(p => p.ProjectTasks)
                 .FirstOrDefault(p => p.ProjectId == projectId);
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace CSGProHackathonAPI.Shared.Models
     public class ProjectRole : BaseModel
     {
         public int ProjectRoleId { get; set; }
+        [JsonIgnore]
         public int ProjectId { get; set; }
         [Required]
         [MaxLength(100)]
@@ -17,6 +19,7 @@ namespace CSGProHackathonAPI.Shared.Models
         [MaxLength(50)]
         public string ExternalSystemKey { get; set; }
 
+        [JsonIgnore]
         public Project Project { get; set; }
     }
 }

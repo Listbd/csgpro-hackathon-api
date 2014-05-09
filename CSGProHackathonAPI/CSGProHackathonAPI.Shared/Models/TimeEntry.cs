@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace CSGProHackathonAPI.Shared.Models
     public class TimeEntry : BaseModel
 	{
 		public int TimeEntryId { get; set; }
-		public int UserId { get; set; }
+        [JsonIgnore]
+        public int UserId { get; set; }
         public int ProjectRoleId { get; set; }
 		public int ProjectTaskId { get; set; }
 		public bool Billable { get; set; }
@@ -50,8 +52,11 @@ namespace CSGProHackathonAPI.Shared.Models
 		}
 		public string Comment { get; set; }
 
-		public User User { get; set; }
+        [JsonIgnore]
+        public User User { get; set; }
+        [JsonIgnore]
         public ProjectRole ProjectRole { get; set; }
-		public ProjectTask ProjectTask { get; set; }
+        [JsonIgnore]
+        public ProjectTask ProjectTask { get; set; }
 	}
 }

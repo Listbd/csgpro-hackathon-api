@@ -10,6 +10,12 @@ namespace CSGProHackathonAPI.ViewModels
 {
     public class ProjectViewModel : BaseViewModel<Project>
     {
+        public ProjectViewModel()
+        {
+            ProjectRoles = new List<ProjectRoleViewModel>();
+            ProjectTasks = new List<ProjectTaskViewModel>();
+        }
+
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
@@ -17,13 +23,19 @@ namespace CSGProHackathonAPI.ViewModels
         [MaxLength(50)]
         public string ExternalSystemKey { get; set; }
 
+        public List<ProjectRoleViewModel> ProjectRoles { get; set; }
+
+        public List<ProjectTaskViewModel> ProjectTasks { get; set; }
+
         public override Project GetModel(User currentUser)
         {
             return new Project()
             {
                 UserId = currentUser.UserId,
                 Name = Name,
-                ExternalSystemKey = ExternalSystemKey
+                ExternalSystemKey = ExternalSystemKey,
+                ProjectRoles = ProjectRoles.Select(pr => pr.GetModel(currentUser)).ToList(),
+                ProjectTasks = ProjectTasks.Select(pt => pt.GetModel(currentUser)).ToList()
             };
         }
 
@@ -31,6 +43,10 @@ namespace CSGProHackathonAPI.ViewModels
         {
             model.Name = Name;
             model.ExternalSystemKey = ExternalSystemKey;
+
+            // JCTODO update roles and tasks
+            // need to make sure that the project model has the roles and tasks collections populated
+            // delete any that have an ID and are no longer in the collection
         }
     }
 }

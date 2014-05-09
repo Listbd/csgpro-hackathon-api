@@ -51,7 +51,7 @@ namespace CSGProHackathonAPI.ApiControllers
 
                     var uriString = Url.Link("DefaultApi", new { controller = "Users", id = user.UserId });
 
-                    return Created(uriString, user);
+                    return Created(uriString, new { UserId = user.UserId, UserName = user.UserName });
                 }
                 else
                 {

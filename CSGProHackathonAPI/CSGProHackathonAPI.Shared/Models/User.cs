@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,8 +10,7 @@ namespace CSGProHackathonAPI.Shared.Models
 {
     public class User : BaseModel
 	{
-		public int UserId { get; set; }
-
+        public int UserId { get; set; }
         [Required]
 		[MaxLength(50)]
 		public string UserName { get; set; }
