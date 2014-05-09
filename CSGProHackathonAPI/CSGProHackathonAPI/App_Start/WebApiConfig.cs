@@ -19,6 +19,11 @@ namespace CSGProHackathonAPI
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "TimeEntriesApi",
+                routeTemplate: "api/timeentries/date/{date}"
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

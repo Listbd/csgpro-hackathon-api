@@ -49,7 +49,7 @@ namespace CSGProHackathonAPI.ViewModels
             };
         }
 
-        public override void UpdateModel(User model)
+        public override void UpdateModel(User model, User currentUser)
         {
             model.UserName = UserName;
             model.HashedPassword = Security.GetSwcSH1(Password);

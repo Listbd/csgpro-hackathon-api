@@ -39,7 +39,7 @@ namespace CSGProHackathonAPI.ViewModels
             };
         }
 
-        public override void UpdateModel(Project model)
+        public override void UpdateModel(Project model, User currentUser)
         {
             model.Name = Name;
             model.ExternalSystemKey = ExternalSystemKey;

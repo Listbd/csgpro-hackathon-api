@@ -31,7 +31,7 @@ namespace CSGProHackathonAPI.ViewModels
             };
         }
 
-        public override void UpdateModel(ProjectTask model)
+        public override void UpdateModel(ProjectTask model, User currentUser)
         {
             model.Name = Name;
             model.Billable = Billable;

@@ -41,6 +41,7 @@ namespace CSGProHackathonAPI.ViewModels
         /// <summary>
         /// Gets an instance of the model from this view model.
         /// </summary>
+        /// <param name="currentUser">The current user.</param>
         /// <returns>A model object.</returns>
         public abstract TModelType GetModel(User currentUser);
 
@@ -48,6 +49,7 @@ namespace CSGProHackathonAPI.ViewModels
         /// Updates a model from this view model.
         /// </summary>
         /// <param name="model">The model object to update.</param>
-        public abstract void UpdateModel(TModelType model);
+        /// <param name="currentUser">The current user.</param>
+        public abstract void UpdateModel(TModelType model, User currentUser);
     }
 }

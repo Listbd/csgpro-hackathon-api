@@ -1,53 +1,61 @@
 ﻿using CSGProHackathonAPI.Infrastructure;
 using CSGProHackathonAPI.Shared.Data;
-using CSGProHackathonAPI.Shared.Infrastructure;
 using CSGProHackathonAPI.Shared.Models;
 using CSGProHackathonAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace CSGProHackathonAPI.ApiControllers
 {
     [BasicAuthorize]
-    public class ProjectsController : BaseApiController<Project>
+    public class TimeEntriesController : BaseApiController<TimeEntry>
     {
         private Repository _repository;
 
-        public ProjectsController()
+        public TimeEntriesController()
         {
             _repository = new Repository();
         }
 
-        // GET api/projects
-        public IEnumerable<Project> Get()
+        // GET api/timeentries
+        public IEnumerable<TimeEntry> Get()
+        {
+            var currentUser = GetCurrentUser();
+            var date = currentUser.ConvertUtcToLocalTime(DateTime.UtcNow).Date;
+
+            return _repository.GetTimeEntries(date, currentUser);
+        }
+
+        // GET api/timeentries
+        [Route("api/timeentries/date/{date}")]
+        public IEnumerable<TimeEntry> Get([FromUri]DateTime date)
         {
             var currentUser = GetCurrentUser();
 
-            return _repository.GetProjects(currentUser.UserId);
+            return _repository.GetTimeEntries(date, currentUser);
         }
 
-        // GET api/projects/5
+        // GET api/timeentries/5
         public IHttpActionResult Get(int id)
         {
             try
             {
-                var project = _repository.GetProject(id);
-                if (project == null)
+                var timeEntry = _repository.GetTimeEntry(id);
+                if (timeEntry == null)
                 {
                     return NotFound();
                 }
 
                 var currentUser = GetCurrentUser();
-                if (project.UserId != currentUser.UserId)
+                if (timeEntry.UserId != currentUser.UserId)
                 {
                     return Forbidden("The current user does not have access to the requested resource.");
                 }
 
-                return Ok(project);
+                return Ok(timeEntry);
             }
             catch (Exception exc)
             {
@@ -55,8 +63,8 @@ namespace CSGProHackathonAPI.ApiControllers
             }
         }
 
-        // POST api/projects
-        public IHttpActionResult Post([FromBody]ProjectViewModel viewModel)
+        // POST api/timeentries
+        public IHttpActionResult Post([FromBody]TimeEntryViewModel viewModel)
         {
             try
             {
@@ -66,13 +74,13 @@ namespace CSGProHackathonAPI.ApiControllers
 
                 if (ModelState.IsValid)
                 {
-                    var project = viewModel.GetModel(currentUser);
+                    var timeEntry = viewModel.GetModel(currentUser);
 
-                    _repository.SaveProject(project);
+                    _repository.SaveTimeEntry(timeEntry, currentUser);
 
-                    var uriString = Url.Link("DefaultApi", new { controller = "Projects", id = project.ProjectId });
+                    var uriString = Url.Link("DefaultApi", new { controller = "TimeEntries", id = timeEntry.TimeEntryId });
 
-                    return Created(uriString, new { ProjectId = project.ProjectId, Name = project.Name });
+                    return Created(uriString, new { TimeEntryId = timeEntry.TimeEntryId });
                 }
                 else
                 {
@@ -85,26 +93,26 @@ namespace CSGProHackathonAPI.ApiControllers
             }
         }
 
-        // PUT api/projects/5
-        public IHttpActionResult Put(int id, [FromBody]ProjectViewModel viewModel)
+        // PUT api/timeentries/5
+        public IHttpActionResult Put(int id, [FromBody]TimeEntryViewModel viewModel)
         {
             try
             {
-                var project = _repository.GetProject(id);
+                var timeEntry = _repository.GetTimeEntry(id);
 
                 var currentUser = GetCurrentUser();
-                if (project.UserId != currentUser.UserId)
+                if (timeEntry.UserId != currentUser.UserId)
                 {
-                    return Forbidden("You can only update projects for the current user.");
+                    return Forbidden("You can only update time entries for the current user.");
                 }
 
                 ValidateViewModel(viewModel, currentUser);
 
                 if (ModelState.IsValid)
                 {
-                    viewModel.UpdateModel(project, currentUser);
+                    viewModel.UpdateModel(timeEntry, currentUser);
 
-                    _repository.SaveProject(project);
+                    _repository.SaveTimeEntry(timeEntry, currentUser);
 
                     return NoContent();
                 }
@@ -119,20 +127,20 @@ namespace CSGProHackathonAPI.ApiControllers
             }
         }
 
-        // DELETE api/projects/5
+        // DELETE api/timeentries/5
         public IHttpActionResult Delete(int id)
         {
             try
             {
-                var project = _repository.GetProject(id);
+                var timeEntry = _repository.GetTimeEntry(id);
 
                 var currentUser = GetCurrentUser();
-                if (project.UserId != currentUser.UserId)
+                if (timeEntry.UserId != currentUser.UserId)
                 {
-                    return Forbidden("You can only delete projects for the current user.");
+                    return Forbidden("You can only delete time entries for the current user.");
                 }
 
-                _repository.DeleteProject(project);
+                _repository.DeleteTimeEntry(timeEntry);
 
                 return NoContent();
             }

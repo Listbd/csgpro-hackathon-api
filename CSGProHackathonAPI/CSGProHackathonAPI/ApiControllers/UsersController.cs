@@ -82,7 +82,7 @@ namespace CSGProHackathonAPI.ApiControllers
 
                 if (ModelState.IsValid)
                 {
-                    viewModel.UpdateModel(user);
+                    viewModel.UpdateModel(user, currentUser);
 
                     _repository.SaveUser(user);
 
