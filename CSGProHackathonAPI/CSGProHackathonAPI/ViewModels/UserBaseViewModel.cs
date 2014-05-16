@@ -8,15 +8,11 @@ using System.Web;
 
 namespace CSGProHackathonAPI.ViewModels
 {
-    public class UserViewModel : BaseViewModel<User>
+    public abstract class UserBaseViewModel : BaseViewModel<User>
     {
         [Required]
         [MaxLength(50)]
         public string UserName { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        public string Password { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -40,7 +36,6 @@ namespace CSGProHackathonAPI.ViewModels
             return new User()
             {
                 UserName = UserName,
-                HashedPassword = Security.GetSwcSH1(Password),
                 Name = Name,
                 Email = Email,
                 TimeZoneId = TimeZoneId,
@@ -52,7 +47,6 @@ namespace CSGProHackathonAPI.ViewModels
         public override void UpdateModel(User model, User currentUser)
         {
             model.UserName = UserName;
-            model.HashedPassword = Security.GetSwcSH1(Password);
             model.Name = Name;
             model.Email = Email;
             model.TimeZoneId = TimeZoneId;

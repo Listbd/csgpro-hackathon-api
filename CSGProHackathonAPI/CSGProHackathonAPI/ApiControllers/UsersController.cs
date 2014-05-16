@@ -39,7 +39,7 @@ namespace CSGProHackathonAPI.ApiControllers
         }
 
         // POST api/users
-        public IHttpActionResult Post([FromBody]UserViewModel viewModel)
+        public IHttpActionResult Post([FromBody]UserAddViewModel viewModel)
         {
             try
             {
@@ -68,11 +68,16 @@ namespace CSGProHackathonAPI.ApiControllers
 
         // PUT api/users/5
         [BasicAuthorize]
-        public IHttpActionResult Put(int id, [FromBody]UserViewModel viewModel)
+        public IHttpActionResult Put(int id, [FromBody]UserEditViewModel viewModel)
         {
             try
             {
                 var user = _repository.GetUser(id);
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
 
                 var currentUser = GetCurrentUser();
                 if (user.UserId != currentUser.UserId)

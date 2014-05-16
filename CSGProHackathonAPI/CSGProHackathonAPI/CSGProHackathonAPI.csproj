@@ -172,7 +172,9 @@
     <Compile Include="ViewModels\ProjectTaskViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\TimeEntryViewModel.cs" />
-    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\UserAddViewModel.cs" />
+    <Compile Include="ViewModels\UserBaseViewModel.cs" />
+    <Compile Include="ViewModels\UserEditViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
