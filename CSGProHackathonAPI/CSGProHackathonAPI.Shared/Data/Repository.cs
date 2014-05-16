@@ -120,6 +120,7 @@ namespace CSGProHackathonAPI.Shared.Data
             var dateUtcEnd = dateUtcStart.AddDays(1);
 
             return _context.TimeEntries
+                .Include(te => te.User)
                 .Include(te => te.ProjectRole)
                 .Include(te => te.ProjectRole.Project)
                 .Include(te => te.ProjectTask)

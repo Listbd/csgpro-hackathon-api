@@ -12,21 +12,114 @@ namespace CSGProHackathonAPI.Shared.Models
 		public int TimeEntryId { get; set; }
         [JsonIgnore]
         public int UserId { get; set; }
+        public string ProjectName
+        {
+            get
+            {
+                string value = null;
+
+                var projectRole = ProjectRole;
+                if (projectRole != null)
+                {
+                    var project = projectRole.Project;
+                    if (project != null)
+                    {
+                        value = project.Name;
+                    }
+                }
+
+                return value;
+            }
+        }
         public int ProjectRoleId { get; set; }
+        public string ProjectRoleName
+        {
+            get
+            {
+                string value = null;
+
+                var projectRole = ProjectRole;
+                if (projectRole != null)
+                {
+                    value = projectRole.Name;
+                }
+
+                return value;
+            }
+        }
 		public int ProjectTaskId { get; set; }
-		public bool Billable { get; set; }
-		public DateTime TimeInUtc { get; set; }
-		public DateTime? TimeOutUtc { get; set; }
+        public string ProjectTaskName
+        {
+            get
+            {
+                string value = null;
+
+                var projectTask = ProjectTask;
+                if (projectTask != null)
+                {
+                    value = projectTask.Name;
+                }
+
+                return value;
+            }
+        }
+        public bool Billable { get; set; }
+        [JsonIgnore]
+        public DateTime TimeInUtc { get; set; }
+        public DateTime? TimeIn
+        {
+            get
+            {
+                DateTime? value = null;
+
+                var user = User;
+                if (user != null)
+                {
+                    value = user.ConvertUtcToLocalTime(TimeInUtc);
+                }
+
+                return value;
+            }
+        }
+        [JsonIgnore]
+        public DateTime? TimeOutUtc { get; set; }
+        public DateTime? TimeOut
+        {
+            get
+            {
+                DateTime? value = null;
+
+                var user = User;
+                var timeOutUtc = TimeOutUtc;
+                if (user != null && timeOutUtc != null)
+                {
+                    value = user.ConvertUtcToLocalTime(timeOutUtc.Value);
+                }
+
+                return value;
+            }
+        }
         public decimal? Hours { get; set; }
-		public TimeSpan TotalTime
+        public TimeSpan TotalTime
 		{
 			get
 			{
-				var timeOutUtc = TimeOutUtc ?? DateTime.UtcNow;
-				if (timeOutUtc >= TimeInUtc)
-					return timeOutUtc - TimeInUtc;
-				else
-					return new TimeSpan();
+                var value = new TimeSpan();
+
+                if (User.UseStopwatchApproachToTimeEntry)
+                {
+                    var timeOutUtc = TimeOutUtc ?? DateTime.UtcNow;
+                    if (timeOutUtc >= TimeInUtc)
+                        value = timeOutUtc - TimeInUtc;
+                }
+                else
+                {
+                    var hours = Hours;
+                    if (hours != null)
+                        value = TimeSpan.FromHours((double)Hours.Value);
+                }
+
+                return value;
 			}
 		}
 		public string TotalTimeDisplay
@@ -58,5 +151,5 @@ namespace CSGProHackathonAPI.Shared.Models
         public ProjectRole ProjectRole { get; set; }
         [JsonIgnore]
         public ProjectTask ProjectTask { get; set; }
-	}
+    }
 }
