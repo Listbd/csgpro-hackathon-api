@@ -1,4 +1,5 @@
-﻿using CSGProHackathonAPI.Shared.Infrastructure;
+﻿using CSGProHackathonAPI.Shared.Data;
+using CSGProHackathonAPI.Shared.Infrastructure;
 using CSGProHackathonAPI.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,21 @@ namespace CSGProHackathonAPI.ViewModels
         
         [MaxLength(50)]
         public string ExternalSystemKey { get; set; }
+
+        protected override IEnumerable<ValidationMessage> Validate(Repository repository, User currentUser)
+        {
+            var userName = UserName;
+            if (!string.IsNullOrWhiteSpace(userName))
+            {
+                var user = repository.GetUser(userName);
+                if (user != null && user.UserId != currentUser.UserId)
+                {
+                    yield return new ValidationMessage(
+                        "UserName", 
+                        string.Format("The user name '{0}' is already in use by another user.", userName));
+                }
+            }
+        }
 
         public override User GetModel(User currentUser)
         {

@@ -64,7 +64,7 @@ namespace CSGProHackathonAPI.ApiControllers
             {
                 var currentUser = GetCurrentUser();
 
-                ValidateViewModel(viewModel, currentUser);
+                ValidateViewModel(viewModel, _repository, currentUser);
 
                 if (ModelState.IsValid)
                 {
@@ -100,7 +100,7 @@ namespace CSGProHackathonAPI.ApiControllers
                     return Forbidden("You can only update projects for the current user.");
                 }
 
-                ValidateViewModel(viewModel, currentUser);
+                ValidateViewModel(viewModel, _repository, currentUser);
 
                 if (ModelState.IsValid)
                 {

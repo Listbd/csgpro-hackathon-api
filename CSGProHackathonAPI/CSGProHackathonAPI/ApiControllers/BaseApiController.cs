@@ -1,4 +1,5 @@
 ﻿using CSGProHackathonAPI.Infrastructure;
+using CSGProHackathonAPI.Shared.Data;
 using CSGProHackathonAPI.Shared.Infrastructure;
 using CSGProHackathonAPI.Shared.Models;
 using CSGProHackathonAPI.ViewModels;
@@ -30,11 +31,11 @@ namespace CSGProHackathonAPI.ApiControllers
             return user;
         }
 
-        protected void ValidateViewModel(BaseViewModel<TModelType> viewModel, User user)
+        protected void ValidateViewModel(BaseViewModel<TModelType> viewModel, Repository repository, User user)
         {
             // If we have validation messages...
             // then add each of the messages to the model state.
-            var validationMessages = viewModel.GetValidationMessages(user);
+            var validationMessages = viewModel.GetValidationMessages(repository, user);
             if (validationMessages.Count > 0)
             {
                 foreach (var validationMessage in validationMessages)

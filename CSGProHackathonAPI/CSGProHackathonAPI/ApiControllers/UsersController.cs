@@ -43,7 +43,7 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             try
             {
-                ValidateViewModel(viewModel, null);
+                ValidateViewModel(viewModel, _repository, null);
 
                 if (ModelState.IsValid)
                 {
@@ -85,7 +85,7 @@ namespace CSGProHackathonAPI.ApiControllers
                     return Forbidden("You can only update your own user record.");
                 }
 
-                ValidateViewModel(viewModel, currentUser);
+                ValidateViewModel(viewModel, _repository, currentUser);
 
                 if (ModelState.IsValid)
                 {

@@ -185,6 +185,13 @@ namespace CSGProHackathonAPI.Shared.Data
                 .FirstOrDefault();
         }
 
+        public User GetUser(string userName)
+        {
+            return _context.Users
+                .Where(u => u.UserName == userName)
+                .FirstOrDefault();
+        }
+
         public void SaveUser(User user)
         {
             _context.SaveEntity(user);
