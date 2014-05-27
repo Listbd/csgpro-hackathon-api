@@ -15,6 +15,9 @@ namespace CSGProHackathonAPI
             config.Filters.Add(new ForceHttpsAttribute());
 #endif
 
+            // Enable CORS
+            config.EnableCors();
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
