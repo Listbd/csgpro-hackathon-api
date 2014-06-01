@@ -38,7 +38,7 @@ namespace CSGProHackathonAPI.ViewModels
             if (!string.IsNullOrWhiteSpace(userName))
             {
                 var user = repository.GetUser(userName);
-                if (user != null && user.UserId != currentUser.UserId)
+                if (user != null && (currentUser == null || user.UserId != currentUser.UserId))
                 {
                     yield return new ValidationMessage(
                         "UserName", 
