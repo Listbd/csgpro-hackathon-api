@@ -1,0 +1,137 @@
+
+http://csgprohackathonapi.azurewebsites.net
+
+Database
+Name: HackathonAPI
+Login: hackathonadmin
+Password: Ilmfo5232!
+
+
+
+
+
+
+DONE Setup view model for time entries results
+    Be sure to handle total time calculations correctly
+    Be sure to convert UTC times into the current user's time zone
+DONE Remove "Password" from the UserViewModel
+DONE Add validations
+    Do not allow duplicate user names
+
+
+
+
+
+Add validations
+
+    Do not allow duplicate Project (per user), Role (per project), and Task (per project) names
+
+    Need to validate TimeZoneId
+
+    Do not allow the User.UseStopwatchApproachToTimeEntry to be changed once that user has time entries
+    Do not allow role or task to be deleted if it is being referenced by a time entry
+    When adding/editing a time entry...
+        Make sure that the supplied role and task IDs belong to the current user
+        Make sure that the supplied role and task IDs belong to the same project
+
+Add a Users/ResetPassword function
+
+Update the PUT methods to support only providing the changed values
+
+Setup POSTMAN examples
+    Is there a way to shared these???
+    Use collections???
+
+Write up the API information
+    Methods with parameters and return values
+        Include status codes and expected return values for each
+        Be sure to specify how errors will be returned
+            Both validations and exceptions
+    List out validations
+
+Setup unit tests
+    http://www.asp.net/web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
+
+Setup black box test runner
+    Run through a series of tests that excercise the API and ensure that the spec has been fully implemented
+    Setup as a website???
+        Use Jasmine to write the tests???
+    Setup as a console app???
+
+Setup simple HTML/Knockout example???
+    Or full-blown AngularJS example???
+
+Setup DI???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Resources
+
+    ASP.NET Web API Supporting RESTful CRUD Operations
+        http://www.matlus.com/as-net-web-api-supporting-restful-crud-operations/
+
+    IHttpActionResult
+        http://www.strathweb.com/2013/06/ihttpactionresult-new-way-of-creating-responses-in-asp-net-web-api-2/
+
+    ActionResults
+        http://www.asp.net/web-api/overview/web-api-routing-and-actions/action-results
+
+
+
+
+DONE Add separate columns for the external system "Key" values
+    This would allow users to indicate which items should map to an external system
+    Affected tables
+        Project
+        Project Role
+        Project Task
+        User
+DONE Setup model classes
+DONE Must specify the precision of the TimeEntry.Hours column
+    Add custom attribute???
+        http://aspdotnetdevelopment.wordpress.com/2013/12/09/entity-framework-code-first-decimal-precision-dataannotation-attribute/
+    Or just do it using the fluent API???
+        Property(item => item.Value).HasPrecision(18,10);
+DONE Generate database migration
+DONE Seed database with some data including user
+DONE Setup meeting to review the API
+DONE Setup repository
+DONE Setup security
+DONE Publish to Azure
+    Make sure that the require HTTPS attribute works on Web API
+DONE Setup API methods
+    DONE Make sure that each API method is verifying that the item's user matches the current user
+        Return 403 if it doesn't match
+    DONE Setup view models
+    DONE Setup exception handling
+        http://bitoftech.net/2014/03/05/new-asp-net-web-api-2-ihttpactionresult-cors-tutorial/
+    DONE When adding a project allow the roles and tasks to also be provided
+DONE Improve error messages format
+    {
+        Message: "The request is invalid."
+        ModelState: {
+           viewModel.Password: [ "The Password field is required." ]
+        }
+    }
+DONE Add ErrorsController
+    Just throws an exception for testing purposes
+DONE Setup TimeZonesController
+    Return collection of available time zones
+DONE Setup controllers for ProjectRole and ProjectTask
+DONE Update Home page copy
+DONE Add CORS support
+    Test from localhost
+    Test from Azure site
+DONE Publish latest changes
+DONE Prepare for meeting

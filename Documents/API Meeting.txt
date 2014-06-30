@@ -1,0 +1,46 @@
+
+Ask who is building front ends vs back ends
+
+Explain the two approaches to tracking time
+    Stopwatch vs explicit sums
+
+Types
+    1) User
+    2) Project
+    3) Project Role
+    4) Project Task
+    5) Time Entry
+
+All date/time values should be stored as UTC in the data store
+
+Security
+
+    The API must require HTTPS
+        Return an HTTP status code of 404 for all non-HTTPS requests
+        Optionally redirect GET requests to use HTTPS
+
+    The API must be secured using Basic Authentication
+        Each request must include the following header
+            Authorization: Basic {Username:Password}
+            Authorization: Basic VGFpc2VlckpvdWRlaDpZRUFSVkZGTw==
+        Basic Authentication
+            http://bitoftech.net/2013/12/03/enforce-https-asp-net-web-api-basic-authentication/
+
+    The API must prevent a user from accessing another user's records
+        Return a status code of 403 Forbidden
+
+Write up API walkthrough
+    Create a new user
+    Create a new project
+        Add role
+        Add task
+    Add time entry
+        Explain the two approaches to recording time
+    Show errors messages
+    Show exception message
+
+Known Issues
+    Not all validations have been implemented
+    Updating projects with roles and tasks is not currently supported
+    Google Chrome (and other browsers) are caching results
+        http://stackoverflow.com/questions/17755239/how-to-stop-chrome-from-caching-rest-response-from-webapi
