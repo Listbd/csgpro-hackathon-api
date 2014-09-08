@@ -18,11 +18,8 @@ namespace CSGProHackathonAPI.Infrastructure
     /// </summary>
     public class BasicAuthorizeAttribute : AuthorizationFilterAttribute
     {
-        private Repository _repository;
-
         public BasicAuthorizeAttribute()
         {
-            _repository = new Repository();
         }
 
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
@@ -44,7 +41,8 @@ namespace CSGProHackathonAPI.Infrastructure
                     var userName = credArray[0];
                     var password = credArray[1];
 
-                    var user = _repository.LoginUser(userName, password);
+                    var repository = new Repository();
+                    var user = repository.LoginUser(userName, password);
                     if (user != null)
                     {
                         var userIdentity = new UserIdentity(user);
