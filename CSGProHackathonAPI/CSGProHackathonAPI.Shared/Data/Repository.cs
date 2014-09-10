@@ -134,6 +134,7 @@ namespace CSGProHackathonAPI.Shared.Data
         public TimeEntry GetTimeEntry(int timeEntryId)
         {
             return _context.TimeEntries
+                .Include(te => te.User)
                 .Include(te => te.ProjectRole)
                 .Include(te => te.ProjectTask)
                 .Where(te => te.TimeEntryId == timeEntryId)
