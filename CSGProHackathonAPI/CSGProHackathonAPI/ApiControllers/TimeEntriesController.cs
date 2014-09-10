@@ -70,6 +70,11 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             try
             {
+                if (viewModel == null)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var currentUser = GetCurrentUser();
 
                 ValidateViewModel(viewModel, _repository, currentUser);
@@ -100,6 +105,11 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             try
             {
+                if (viewModel == null)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var timeEntry = _repository.GetTimeEntry(id);
 
                 var currentUser = GetCurrentUser();

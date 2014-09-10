@@ -18,6 +18,9 @@ namespace CSGProHackathonAPI
             // Enable CORS
             config.EnableCors();
 
+            // Include error details.
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

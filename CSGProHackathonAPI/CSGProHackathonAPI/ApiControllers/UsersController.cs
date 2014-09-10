@@ -43,6 +43,11 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             try
             {
+                if (viewModel == null)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 ValidateViewModel(viewModel, _repository, null);
 
                 if (ModelState.IsValid)
@@ -72,6 +77,11 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             try
             {
+                if (viewModel == null)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var user = _repository.GetUser(id);
 
                 if (user == null)
