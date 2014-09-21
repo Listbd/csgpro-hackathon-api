@@ -23,6 +23,8 @@ namespace CSGProHackathonAPI.ViewModels
         [MaxLength(50)]
         public string ExternalSystemKey { get; set; }
 
+        public bool Archived { get; set; }
+
         public List<ProjectRoleViewModel> ProjectRoles { get; set; }
 
         public List<ProjectTaskViewModel> ProjectTasks { get; set; }
@@ -34,6 +36,7 @@ namespace CSGProHackathonAPI.ViewModels
                 UserId = currentUser.UserId,
                 Name = Name,
                 ExternalSystemKey = ExternalSystemKey,
+                Archived = Archived,
                 ProjectRoles = ProjectRoles.Select(pr => pr.GetModel(currentUser)).ToList(),
                 ProjectTasks = ProjectTasks.Select(pt => pt.GetModel(currentUser)).ToList()
             };
@@ -43,6 +46,7 @@ namespace CSGProHackathonAPI.ViewModels
         {
             model.Name = Name;
             model.ExternalSystemKey = ExternalSystemKey;
+            model.Archived = Archived;
 
             // JCTODO update roles and tasks
             // need to make sure that the project model has the roles and tasks collections populated

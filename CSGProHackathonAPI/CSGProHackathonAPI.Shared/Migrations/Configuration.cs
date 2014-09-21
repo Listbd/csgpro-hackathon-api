@@ -61,13 +61,14 @@ namespace CSGProHackathonAPI.Shared.Migrations
             AddProjectTask(context, 14, 7, false, true, "1:1 Team Member Meeting");
         }
 
-        private void AddProject(Context context, int projectId, int userId, string name)
+        private void AddProject(Context context, int projectId, int userId, string name, bool archived = false)
         {
             var project = new Project()
             {
                 ProjectId = projectId,
                 UserId = userId,
-                Name = name
+                Name = name,
+                Archived = archived
             };
             context.Projects.AddOrUpdate(project);
         }

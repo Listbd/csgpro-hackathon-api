@@ -24,6 +24,7 @@ namespace CSGProHackathonAPI.Shared.Models
 		public string Name { get; set; }
         [MaxLength(50)]
         public string ExternalSystemKey { get; set; }
+        public bool Archived { get; set; }
 
         [JsonIgnore]
         public User User { get; set; }
