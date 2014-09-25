@@ -34,6 +34,23 @@ namespace CSGProHackathonAPI.Shared.Data
                 .ToList();
         }
 
+        public List<Project> GetProjectHours(int userId)
+        {
+            var projects = _context.Projects
+                .Include(p => p.ProjectRoles)
+                .Include(p => p.ProjectTasks)
+                .Where(p => p.UserId == userId)
+                .OrderBy(p => p.Name)
+                .ToList();
+
+            var timeEntries = _context.TimeEntries
+                .Include(te => te.User)
+                .Where(te => te.UserId == userId)
+                .ToList();
+
+            return projects;
+        }
+
         public Project GetProject(int projectId)
         {
             return _context.Projects

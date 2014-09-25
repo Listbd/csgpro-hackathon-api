@@ -131,6 +131,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\BaseApiController.cs" />
     <Compile Include="ApiControllers\ErrorsController.cs" />
+    <Compile Include="ApiControllers\ProjectHoursController.cs" />
     <Compile Include="ApiControllers\ProjectRolesController.cs" />
     <Compile Include="ApiControllers\ProjectTasksController.cs" />
     <Compile Include="ApiControllers\TimeEntriesController.cs" />
