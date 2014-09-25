@@ -34,7 +34,7 @@ namespace CSGProHackathonAPI.Shared.Data
                 .ToList();
         }
 
-        public List<Project> GetProjectHours(int userId)
+        public List<Project> GetProjectHours(int userId, DateTime dateUtcStart, DateTime dateUtcEnd)
         {
             var projects = _context.Projects
                 .Include(p => p.ProjectRoles)
@@ -45,7 +45,8 @@ namespace CSGProHackathonAPI.Shared.Data
 
             var timeEntries = _context.TimeEntries
                 .Include(te => te.User)
-                .Where(te => te.UserId == userId)
+                .Where(te => te.UserId == userId &&
+                    te.TimeInUtc >= dateUtcStart && te.TimeInUtc < dateUtcEnd)
                 .ToList();
 
             return projects;
