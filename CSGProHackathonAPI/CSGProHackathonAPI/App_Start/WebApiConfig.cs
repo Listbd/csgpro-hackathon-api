@@ -15,6 +15,9 @@ namespace CSGProHackathonAPI
             config.Filters.Add(new ForceHttpsAttribute());
 #endif
 
+            // Configure Json.NET to ignore circular references.
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
             // Enable CORS
             config.EnableCors();
 
