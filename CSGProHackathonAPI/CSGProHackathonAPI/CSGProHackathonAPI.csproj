@@ -45,6 +45,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -162,6 +165,7 @@
     </Compile>
     <Compile Include="Infrastructure\BasicAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\ErrorActionResult.cs" />
+    <Compile Include="Infrastructure\ExcelActionResult.cs" />
     <Compile Include="Infrastructure\ForbiddenActionResult.cs" />
     <Compile Include="Infrastructure\ForceHttpsAttribute.cs" />
     <Compile Include="Infrastructure\NoContentActionResult.cs" />

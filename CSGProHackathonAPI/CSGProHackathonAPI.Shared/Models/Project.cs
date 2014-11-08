@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CSGProHackathonAPI.Shared.UtilityModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -79,6 +80,23 @@ namespace CSGProHackathonAPI.Shared.Models
                 var totalBillableTime = TotalBillableTimeInHours;
                 return totalBillableTime != null ? Math.Round(totalBillableTime.Value, 2).ToString() : null;
             }
+        }
+
+        public static List<ProjectTasksForExcel> GetProjectTasksForExcel(List<Project> projects)
+        {
+            return projects
+                .SelectMany(p => p.ProjectTasks)
+                .Select(pt => new ProjectTasksForExcel()
+                {
+                    BillableDefault = pt.Billable ? "Yes" : "No",
+                    ProjectExternalSystemKey = pt.Project.ExternalSystemKey,
+                    ProjectName = pt.Project.Name,
+                    TaskExternalSystemKey = pt.ExternalSystemKey,
+                    TaskName = pt.Name,
+                    TotalBillableTimeInHours = pt.TotalBillableTimeInHours,
+                    TotalTimeInHours = pt.TotalTimeInHours
+                })
+                .ToList();
         }
 
         private List<TimeEntry> GetTimeEntries()

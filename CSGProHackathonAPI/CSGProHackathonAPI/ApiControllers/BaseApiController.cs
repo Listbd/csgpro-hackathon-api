@@ -59,5 +59,10 @@ namespace CSGProHackathonAPI.ApiControllers
         {
             return new NoContentActionResult(Request);
         }
+
+        protected ExcelActionResult<T> Excel<T>(IEnumerable<T> data, string fileName)
+        {
+            return new ExcelActionResult<T>(data, fileName);
+        }
     }
 }
