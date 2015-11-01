@@ -25,39 +25,11 @@ namespace CSGProHackathonAPI.Shared.Data
         public void PrepareEntityForSave<TEntityType>(TEntityType entity)
             where TEntityType : BaseModel
         {
-            //if (entity == null)
-            //{
-            //    throw new ArgumentException("Cannot prepare a null entity for save.");
-            //}
+            if (entity == null)
+            {
+                throw new ArgumentException("Cannot prepare a null entity for save.");
+            }
 
-            //var entry = this.Entry(entity);
-
-            //if (entry.State == EntityState.Detached)
-            //{
-            //    var set = this.Set<TEntityType>();
-
-            //    var entityPrimaryKeyPropertyValue = entity.GetPrimaryKeyPropertyValue();
-            //    // JCTODO remove???
-            //    //TEntityType attachedEntity = set.Local.SingleOrDefault(e => e.GetPrimaryKeyPropertyValue() == entityPrimaryKeyPropertyValue);
-            //    TEntityType attachedEntity = set.Find(entityPrimaryKeyPropertyValue);
-
-            //    if (attachedEntity != null)
-            //    {
-            //        var attachedEntry = this.Entry(attachedEntity);
-            //        attachedEntry.CurrentValues.SetValues(entity);
-            //    }
-            //    else
-            //    {
-            //        entry.State = EntityState.Modified;
-
-            //        //if (entity.IsNew())
-            //        //    Set<TEntityType>().Add(entity);
-            //        //else
-            //        //    Entry<TEntityType>(entity).State = System.Data.Entity.EntityState.Modified;
-            //    }
-            //}
-
-            // JCTODO remove???
             if (entity.IsNew())
                 Set<TEntityType>().Add(entity);
             else

@@ -44,6 +44,7 @@ namespace CSGProHackathonAPI.Infrastructure
                     {
                         var value = property.GetValue(item);
                         worksheet.Cells[row, column].Value = value;
+
                         // TODO format the cell
 
                         column++;

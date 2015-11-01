@@ -52,19 +52,6 @@ namespace CSGProHackathonAPI.Infrastructure
                         Thread.CurrentPrincipal = currentPrincipal;
                         return;
                     }
-
-                    // JCTODO remove???
-                    //if (IsResourceOwner(userName, actionContext))
-                    //{
-                    //    //You can use Websecurity or asp.net memebrship provider to login, for
-                    //    //for he sake of keeping example simple, we used out own login functionality
-                    //    if (TheRepository.LoginStudent(userName, password))
-                    //    {
-                    //        var currentPrincipal = new GenericPrincipal(new GenericIdentity(userName), null);
-                    //        Thread.CurrentPrincipal = currentPrincipal;
-                    //        return;
-                    //    }
-                    //}
                 }
             }
 
@@ -82,20 +69,6 @@ namespace CSGProHackathonAPI.Infrastructure
 
             return credArray;
         }
-
-        // JCTODO remove???
-        //private bool IsResourceOwner(string userName, System.Web.Http.Controllers.HttpActionContext actionContext)
-        //{
-        //    var routeData = actionContext.Request.GetRouteData();
-        //    var resourceUserName = routeData.Values["userName"] as string;
-
-        //    if (resourceUserName == userName)
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
 
         private void HandleUnauthorizedRequest(System.Web.Http.Controllers.HttpActionContext actionContext)
         {

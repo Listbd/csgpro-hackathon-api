@@ -48,7 +48,7 @@ namespace CSGProHackathonAPI.ViewModels
             model.ExternalSystemKey = ExternalSystemKey;
             model.Archived = Archived;
 
-            // JCTODO update roles and tasks
+            // TODO update roles and tasks
             // need to make sure that the project model has the roles and tasks collections populated
             // delete any that have an ID and are no longer in the collection
         }
