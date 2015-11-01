@@ -1,4 +1,5 @@
 ﻿using CSGProHackathonAPI.Infrastructure;
+using CSGProHackathonAPI.Messages;
 using CSGProHackathonAPI.Shared.Data;
 using CSGProHackathonAPI.Shared.Models;
 using CSGProHackathonAPI.ViewModels;
@@ -58,7 +59,7 @@ namespace CSGProHackathonAPI.ApiControllers
 
                     var uriString = Url.Link("DefaultApi", new { controller = "Users", id = user.UserId });
 
-                    return Created(uriString, new { UserId = user.UserId, UserName = user.UserName });
+                    return Created(uriString, new UserMessage() { UserId = user.UserId, UserName = user.UserName });
                 }
                 else
                 {
