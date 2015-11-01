@@ -25,5 +25,5 @@ With "Explicit Sums" time tracking, the end user is intended to enter their time
 * Entity Framework was used for all data access
 * A SQL Server 2014 LocalDb "v12.0" instance is required in order to run the API locally
 * The API is secured using Basic Authentication
-* [SimpleInjector](https://simpleinjector.org/index.html) is being used for the Dependency Injection Container
+* [Simple Injector](https://simpleinjector.org/index.html) is being used for the Dependency Injection Container
 * [NSubstitute](http://nsubstitute.github.io/) is being used for unit test object mocking
