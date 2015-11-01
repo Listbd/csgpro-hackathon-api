@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CSGProHackathonAPI.Shared.Data
 {
-    public class Context : DbContext
+    public class Context : DbContext, IContext
     {
         public Context()
             : base(nameOrConnectionString: "Context")

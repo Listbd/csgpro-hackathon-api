@@ -15,11 +15,11 @@ namespace CSGProHackathonAPI.ApiControllers
     [EnableCors("*", "*", "*")]
     public class UsersController : BaseApiController<User>
     {
-        private Repository _repository;
+        private IRepository _repository;
 
-        public UsersController()
+        public UsersController(IRepository repository)
         {
-            _repository = new Repository();
+            _repository = repository;
         }
 
         // GET api/users

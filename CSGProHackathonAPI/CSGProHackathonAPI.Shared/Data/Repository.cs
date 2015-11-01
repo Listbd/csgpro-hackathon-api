@@ -9,15 +9,11 @@ using System.Threading.Tasks;
 
 namespace CSGProHackathonAPI.Shared.Data
 {
-    public class Repository
+    public class Repository : IRepository
     {
-        private Context _context;
+        private IContext _context;
 
-        public Repository() : this (new Context())
-        {
-        }
-
-        public Repository(Context context)
+        public Repository(IContext context)
         {
             _context = context;
         }

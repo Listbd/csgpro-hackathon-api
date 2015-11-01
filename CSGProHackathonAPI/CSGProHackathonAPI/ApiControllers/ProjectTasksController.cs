@@ -16,11 +16,11 @@ namespace CSGProHackathonAPI.ApiControllers
     [EnableCors("*", "*", "*")]
     public class ProjectTasksController : BaseApiController<ProjectTask>
     {
-        private Repository _repository;
+        private IRepository _repository;
 
-        public ProjectTasksController()
+        public ProjectTasksController(IRepository repository)
         {
-            _repository = new Repository();
+            _repository = repository;
         }
 
         // GET api/projecttasks/5

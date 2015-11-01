@@ -27,11 +27,11 @@ namespace CSGProHackathonAPI.ApiControllers
             Excel
         }
 
-        private Repository _repository;
+        private IRepository _repository;
 
-        public ProjectHoursController()
+        public ProjectHoursController(IRepository repository)
         {
-            _repository = new Repository();
+            _repository = repository;
         }
 
         // GET api/projecthours?format={value}

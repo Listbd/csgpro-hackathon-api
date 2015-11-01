@@ -15,11 +15,11 @@ namespace CSGProHackathonAPI.ApiControllers
     [EnableCors("*", "*", "*")]
     public class TimeEntriesController : BaseApiController<TimeEntry>
     {
-        private Repository _repository;
+        private IRepository _repository;
 
-        public TimeEntriesController()
+        public TimeEntriesController(IRepository repository)
         {
-            _repository = new Repository();
+            _repository = repository;
         }
 
         // GET api/timeentries

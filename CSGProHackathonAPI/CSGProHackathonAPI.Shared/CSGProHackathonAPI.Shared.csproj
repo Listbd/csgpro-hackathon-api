@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\IContext.cs" />
+    <Compile Include="Data\IRepository.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\Security.cs" />
     <Compile Include="Infrastructure\ValidationMessage.cs" />

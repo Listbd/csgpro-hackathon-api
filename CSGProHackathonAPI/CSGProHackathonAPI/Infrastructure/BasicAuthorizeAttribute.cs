@@ -41,7 +41,9 @@ namespace CSGProHackathonAPI.Infrastructure
                     var userName = credArray[0];
                     var password = credArray[1];
 
-                    var repository = new Repository();
+                    // TODO get the context and repository from the DI container
+                    var context = new Context();
+                    var repository = new Repository(context);
                     var user = repository.LoginUser(userName, password);
                     if (user != null)
                     {

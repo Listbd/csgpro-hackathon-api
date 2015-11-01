@@ -32,7 +32,7 @@ namespace CSGProHackathonAPI.ViewModels
         [MaxLength(50)]
         public string ExternalSystemKey { get; set; }
 
-        protected override IEnumerable<ValidationMessage> Validate(Repository repository, User currentUser)
+        protected override IEnumerable<ValidationMessage> Validate(IRepository repository, User currentUser)
         {
             var userName = UserName;
             if (!string.IsNullOrWhiteSpace(userName))

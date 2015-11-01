@@ -31,7 +31,7 @@ namespace CSGProHackathonAPI.ApiControllers
             return user;
         }
 
-        protected void ValidateViewModel(BaseViewModel<TModelType> viewModel, Repository repository, User user)
+        protected void ValidateViewModel(BaseViewModel<TModelType> viewModel, IRepository repository, User user)
         {
             // If we have validation messages...
             // then add each of the messages to the model state.

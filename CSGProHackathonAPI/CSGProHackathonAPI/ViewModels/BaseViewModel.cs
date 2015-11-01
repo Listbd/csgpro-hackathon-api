@@ -16,7 +16,7 @@ namespace CSGProHackathonAPI.ViewModels
         /// <param name="repository">The repository.</param>
         /// <param name="currentUser">The current user.</param>
         /// <returns>A collection of ValidationMessage objects.</returns>
-        public List<ValidationMessage> GetValidationMessages(Repository repository, User currentUser)
+        public List<ValidationMessage> GetValidationMessages(IRepository repository, User currentUser)
         {
             // NOTE The Validate() method returns an IEnumerable collection
             // so we need to make sure that the collection is not null and then
@@ -36,7 +36,7 @@ namespace CSGProHackathonAPI.ViewModels
         /// </summary>
         /// <param name="repository">The repository.</param>
         /// <param name="currentUser">The current user.</param>
-        protected virtual IEnumerable<ValidationMessage> Validate(Repository repository, User currentUser)
+        protected virtual IEnumerable<ValidationMessage> Validate(IRepository repository, User currentUser)
         {
             return null;
         }
