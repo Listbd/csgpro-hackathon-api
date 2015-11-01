@@ -38,7 +38,6 @@ namespace CSGProHackathonAPI.Infrastructure
                     actionContext.Response = request.CreateResponse(HttpStatusCode.NotFound);
                     actionContext.Response.Content = new StringContent(html, Encoding.UTF8, "text/html");
                 }
-
             }
         }
     }

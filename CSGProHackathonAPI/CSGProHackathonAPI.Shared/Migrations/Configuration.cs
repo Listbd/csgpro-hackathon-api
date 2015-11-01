@@ -20,30 +20,30 @@ namespace CSGProHackathonAPI.Shared.Migrations
             var user = new User()
             {
                 UserId = 1,
-                UserName = "jamesc",
-                HashedPassword = Security.GetSwcSH1("gamehead"),
-                Name = "James Churchill",
-                Email = "jamesc@csgpro.com",
+                UserName = "johns",
+                HashedPassword = Security.GetSwcSH1("password"),
+                Name = "John Smith",
+                Email = "john@smith.com",
                 TimeZoneId = "Pacific Standard Time",
                 UseStopwatchApproachToTimeEntry = true
             };
             context.Users.AddOrUpdate(user);
 
-            AddProject(context, 1, 1, "CIS: Liability & Workers' Comp Claims Management System - Elaboration Phase");
-            AddProject(context, 2, 1, "LP: Barcode Scanning App");
-            AddProject(context, 3, 1, "McMenamins: MCM-12 Events-Phase 1");
-            AddProject(context, 4, 1, "R2C: Tracker-2 Development");
-            AddProject(context, 5, 1, "R2C: Tracker-2 Maintenance");
-            AddProject(context, 6, 1, "SSII: Managed Services - Web Apps");
-            AddProject(context, 7, 1, "CSG: Internal projects - AppDev");
+            AddProject(context, 1, 1, "Claims Management System - Elaboration Phase");
+            AddProject(context, 2, 1, "Barcode Scanning App");
+            AddProject(context, 3, 1, "Events - Phase 1");
+            AddProject(context, 4, 1, "Tracker 2 Development");
+            AddProject(context, 5, 1, "Tracker 2 Maintenance");
+            AddProject(context, 6, 1, "Managed Services - Web Apps");
+            AddProject(context, 7, 1, "Internal Projects - App Dev");
 
-            AddProjectRole(context, 1, 1, "Default", "James");
-            AddProjectRole(context, 2, 1, "Default", "PM");
+            AddProjectRole(context, 1, 1, "Default", "John Smith");
+            AddProjectRole(context, 2, 1, "Default", "Project Manager");
             AddProjectRole(context, 3, 1, "Default", "Analyst");
             AddProjectRole(context, 4, 1, "Default", "Architect");
-            AddProjectRole(context, 5, 1, "Default", "Architect."); // Yes, the period at the end is actually supposed to be there
-            AddProjectRole(context, 6, 1, "Default", "Sr. Dev");
-            AddProjectRole(context, 7, 1, "Default", "James Churchill");
+            AddProjectRole(context, 5, 1, "Default", "Architect");
+            AddProjectRole(context, 6, 1, "Default", "Senior Dev");
+            AddProjectRole(context, 7, 1, "Default", "John Smith");
 
             AddProjectTask(context, 1, 1, true, true);
             AddProjectTask(context, 2, 2, true, true);
@@ -72,6 +72,7 @@ namespace CSGProHackathonAPI.Shared.Migrations
             };
             context.Projects.AddOrUpdate(project);
         }
+
         private void AddProjectRole(Context context, int projectRoleId, int projectId, string name, 
             string externalSystemKey = null)
         {
@@ -84,6 +85,7 @@ namespace CSGProHackathonAPI.Shared.Migrations
             };
             context.ProjectRoles.AddOrUpdate(projectRole);
         }
+
         private void AddProjectTask(Context context, int projectTaskId, int projectId, bool billable,
             bool requireComment, string name = "Default")
         {

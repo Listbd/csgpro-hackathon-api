@@ -24,8 +24,8 @@ namespace CSGProHackathonAPI.Infrastructure
 
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            //Case that user is authenticated using forms authentication
-            //so no need to check header for basic authentication.
+            // Case that user is authenticated using forms authentication
+            // so no need to check header for basic authentication.
             if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
                 return;
@@ -60,7 +60,7 @@ namespace CSGProHackathonAPI.Infrastructure
 
         private string[] GetCredentials(System.Net.Http.Headers.AuthenticationHeaderValue authHeader)
         {
-            //Base 64 encoded string
+            // Base 64 encoded string
             var rawCred = authHeader.Parameter;
             var encoding = Encoding.GetEncoding("iso-8859-1");
             var cred = encoding.GetString(Convert.FromBase64String(rawCred));

@@ -1,25 +1,11 @@
 
 http://csgprohackathonapi.azurewebsites.net
 
+
 Database
 Name: HackathonAPI
 Login: hackathonadmin
-Password: Ilmfo5232!
-
-
-
-
-
-
-DONE Setup view model for time entries results
-    Be sure to handle total time calculations correctly
-    Be sure to convert UTC times into the current user's time zone
-DONE Remove "Password" from the UserViewModel
-DONE Add validations
-    Do not allow duplicate user names
-
-
-
+Password: *********
 
 
 Add validations
@@ -29,7 +15,9 @@ Add validations
     Need to validate TimeZoneId
 
     Do not allow the User.UseStopwatchApproachToTimeEntry to be changed once that user has time entries
+
     Do not allow role or task to be deleted if it is being referenced by a time entry
+
     When adding/editing a time entry...
         Make sure that the supplied role and task IDs belong to the current user
         Make sure that the supplied role and task IDs belong to the same project
@@ -39,8 +27,6 @@ Add a Users/ResetPassword function
 Update the PUT methods to support only providing the changed values
 
 Setup POSTMAN examples
-    Is there a way to shared these???
-    Use collections???
 
 Write up the API information
     Methods with parameters and return values
@@ -58,23 +44,6 @@ Setup black box test runner
         Use Jasmine to write the tests???
     Setup as a console app???
 
-Setup simple HTML/Knockout example???
-    Or full-blown AngularJS example???
-
-Setup DI???
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Resources
 
@@ -86,8 +55,6 @@ Resources
 
     ActionResults
         http://www.asp.net/web-api/overview/web-api-routing-and-actions/action-results
-
-
 
 
 DONE Add separate columns for the external system "Key" values
@@ -135,3 +102,9 @@ DONE Add CORS support
     Test from Azure site
 DONE Publish latest changes
 DONE Prepare for meeting
+DONE Setup view model for time entries results
+    Be sure to handle total time calculations correctly
+    Be sure to convert UTC times into the current user's time zone
+DONE Remove "Password" from the UserViewModel
+DONE Add validations
+    Do not allow duplicate user names
